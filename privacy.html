@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Vividnest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080b0f; --bg2: #0d1117; --bg3: #111820;
+      --accent: #e8ff47; --text: #f0f4f8; --muted: #9ba8b8; --border: rgba(255,255,255,0.07);
+      --nav-bg: rgba(8,11,15,0.88);
+    }
+    html[data-theme="light"] {
+      --bg: #f5f6f8; --bg2: #ffffff; --bg3: #eceef2;
+      --accent: #6c47ff; --text: #111318; --muted: #4a5568; --border: rgba(0,0,0,0.09);
+      --nav-bg: rgba(245,246,248,0.92);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; transition: background 0.25s, color 0.25s; overflow-x: hidden; }
+
+    /* ── AURORA ── */
+    .aurora { position: fixed; pointer-events: none; z-index: 0; border-radius: 50%; filter: blur(100px); }
+    .aurora-1 { width: 500px; height: 400px; background: radial-gradient(ellipse, rgba(232,255,71,0.06) 0%, transparent 70%); top: 10%; right: 0; animation: auroraA 20s ease-in-out infinite alternate; }
+    .aurora-2 { width: 400px; height: 350px; background: radial-gradient(ellipse, rgba(139,124,248,0.06) 0%, transparent 70%); bottom: 10%; left: 0; animation: auroraB 16s ease-in-out infinite alternate; }
+    @keyframes auroraA { 0% { transform: translate(0,0); } 100% { transform: translate(-40px,60px); } }
+    @keyframes auroraB { 0% { transform: translate(0,0); } 100% { transform: translate(50px,-40px); } }
+
+    /* ── SCAN LINES ── */
+    body::after { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(232,255,71,0.008) 2px, rgba(232,255,71,0.008) 4px); pointer-events: none; z-index: 200; }
+    html[data-theme="light"] body::after { display: none; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; background: var(--nav-bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: background 0.25s; }
+    .theme-toggle { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg3); cursor: pointer; transition: background 0.2s, border-color 0.2s, transform 0.2s; color: var(--muted); flex-shrink: 0; }
+    .theme-toggle:hover { background: var(--bg2); border-color: rgba(232,255,71,0.3); color: var(--text); transform: rotate(20deg); }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .back-link { display: flex; align-items: center; gap: 0.5rem; color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s, gap 0.2s; }
+    .back-link:hover { color: var(--text); gap: 0.7rem; }
+
+    /* ── MAIN ── */
+    main { max-width: 720px; margin: 0 auto; padding: 8rem 2rem 6rem; position: relative; z-index: 1; }
+    .page-label { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; animation: fadeUp 0.5s ease both; }
+    .page-label::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.02em; margin-bottom: 0.5rem; animation: fadeUp 0.5s 0.08s ease both; }
+    .last-updated { font-size: 0.85rem; color: var(--muted); margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); animation: fadeUp 0.5s 0.15s ease both; }
+
+    /* ── POLICY SECTIONS ── */
+    .policy-section { margin-bottom: 3rem; animation: fadeUp 0.6s ease both; }
+    .policy-section:nth-child(3) { animation-delay: 0.1s; }
+    .policy-section:nth-child(4) { animation-delay: 0.15s; }
+    .policy-section:nth-child(5) { animation-delay: 0.2s; }
+    .policy-section:nth-child(6) { animation-delay: 0.25s; }
+    .policy-section:nth-child(7) { animation-delay: 0.3s; }
+    h2 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1.2rem; margin-bottom: 1rem; color: var(--text); display: flex; align-items: center; gap: 0.75rem; transition: color 0.2s; }
+    h2::before { content: ''; width: 4px; height: 1.2em; background: var(--accent); border-radius: 2px; flex-shrink: 0; transition: transform 0.2s, box-shadow 0.2s; }
+    .policy-section:hover h2::before { transform: scaleY(1.3); box-shadow: 0 0 8px rgba(232,255,71,0.4); }
+    p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; line-height: 1.75; }
+    ul { list-style: none; margin: 1rem 0; }
+    ul li { color: var(--muted); padding: 0.5rem 0 0.5rem 1.5rem; position: relative; font-size: 1rem; transition: transform 0.2s, color 0.2s; }
+    ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.85rem; transition: transform 0.2s; }
+    ul li:hover { color: var(--text); transform: translateX(3px); }
+    ul li:hover::before { transform: translateX(2px); }
+
+    /* ── INFO BOX ── */
+    .info-box { border-radius: 16px; padding: 1.5rem 1.75rem; margin: 2rem 0; border: 1px solid; position: relative; overflow: hidden; }
+    .info-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,255,71,0.3), transparent); }
+    .info-box.neutral { background: rgba(255,255,255,0.025); border-color: var(--border); }
+    .info-box.neutral p { color: var(--muted); margin: 0; font-size: 0.95rem; }
+
+    /* ── LINKS ── */
+    a { color: var(--accent); text-decoration: none; position: relative; }
+    a:not(.logo):not(.back-link)::after { content: ''; position: absolute; left: 0; bottom: -1px; width: 0; height: 1px; background: var(--accent); transition: width 0.25s; }
+    a:not(.logo):not(.back-link):hover::after { width: 100%; }
+
+    /* ── FOOTER ── */
+    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; position: relative; z-index: 1; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+
+    html[data-theme="light"] .aurora-1 { background: radial-gradient(ellipse, rgba(108,71,255,0.04) 0%, transparent 70%); }
+    html[data-theme="light"] .aurora-2 { background: radial-gradient(ellipse, rgba(108,71,255,0.04) 0%, transparent 70%); }
+  </style>
+</head>
+<body>
+
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+
+  <nav>
+    <a href="index.html" class="logo">vivid<span>nest</span></a>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <a href="index.html" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to home
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:block"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-label">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last updated: June 2026</p>
+
+    <div class="info-box neutral">
+      <p>This policy covers all browser extensions and services published by Vividnest. Some features operate entirely on your device. Others — particularly premium and cross-device features — may involve data being transmitted to our servers. This policy explains what we collect, why, and how we handle it.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Overview</h2>
+      <p>Vividnest builds browser extensions and tools designed to be both powerful and transparent. We only collect data when it's necessary to provide a feature — and we never sell or share your data with third parties for advertising purposes.</p>
+      <p>As our products grow to include premium features, cross-device sync, and companion apps, some data handling will evolve. This policy will be updated to reflect those changes.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>What We Collect</h2>
+      <p>Depending on which features or extensions you use, we may collect the following:</p>
+      <ul>
+        <li>Extension settings and preferences (stored locally on your device by default)</li>
+        <li>Account information such as email address, if an account is created</li>
+        <li>Usage data required to power cross-device or sync features</li>
+        <li>Technical information such as extension version and browser type, for support purposes</li>
+      </ul>
+      <p>We do not collect your browsing history, passwords, or any data unrelated to the functionality of our extensions.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>How We Use Your Data</h2>
+      <p>Any data we collect is used solely to:</p>
+      <ul>
+        <li>Deliver and improve the features you've chosen to use</li>
+        <li>Sync settings or controls across devices when you opt in</li>
+        <li>Manage your subscription or account if applicable</li>
+        <li>Respond to support requests</li>
+      </ul>
+      <p>We do not look through your personal data, sell it, or share it with advertisers or third parties.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Local Storage</h2>
+      <p>For features that don't require server communication, your data is stored locally on your device using the browser's built-in storage API. This data never leaves your device unless you opt into a feature that requires it.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Permissions</h2>
+      <p>Our extensions request only the permissions required for their features to function. Each permission is used solely for its stated purpose. You can review permissions on each extension's store listing — Chrome Web Store for Chromium-based browsers, and Firefox Add-ons for Firefox.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Third Parties</h2>
+      <p>We do not share your data with third parties for advertising or tracking purposes. If a premium feature requires a third-party service (such as payment processing), only the minimum necessary data is shared and that service's own privacy policy will apply.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Data Retention</h2>
+      <p>Local data can be deleted at any time by uninstalling the extension. If you have an account, you may request deletion of your account data by contacting us.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Children's Privacy</h2>
+      <p>Our extensions are not directed at children under 13. We do not knowingly collect information from children.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Changes to This Policy</h2>
+      <p>As Vividnest grows and new features are introduced, this policy will be updated. The date at the top of this page reflects the most recent revision. Continued use of our extensions after changes constitutes acceptance of the updated policy.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Contact</h2>
+      <p>Questions about this policy or how your data is handled? Reach out anytime:</p>
+      <p><a href="mailto:vividnest.team@gmail.com">vividnest.team@gmail.com</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="index.html">← Back to Vividnest</a> &nbsp;·&nbsp; © 2026 Vividnest</p>
+  </footer>
+
+  <script>
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('themeToggle');
+    const iconSun = document.getElementById('iconSun');
+    const iconMoon = document.getElementById('iconMoon');
+
+    function applyTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      const isDark = theme === 'dark';
+      iconSun.style.display = isDark ? 'block' : 'none';
+      iconMoon.style.display = isDark ? 'none' : 'block';
+      localStorage.setItem('vn-theme', theme);
+    }
+
+    function initTheme() {
+      const saved = localStorage.getItem('vn-theme');
+      if (saved) { applyTheme(saved); return; }
+      applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    }
+
+    toggleBtn.addEventListener('click', () => applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+    initTheme();
+  </script>
+</body>
+</html>
