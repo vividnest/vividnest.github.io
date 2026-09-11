@@ -169,6 +169,8 @@ Paddle.Initialize({ token: PADDLE_CLIENT_TOKEN });
 
 const params = new URLSearchParams(window.location.search);
 const uid = params.get('uid');
+const email = params.get('email');
+const name = params.get('name');
 
 const checkoutButtons = document.getElementById('checkoutButtons');
 const noUidNotice = document.getElementById('noUidNotice');
@@ -181,13 +183,23 @@ if (uid) {
   checkoutButtons.style.display = 'block';
   noUidNotice.style.display = 'none';
   signedInAs.style.display = 'block';
-  signedInAs.textContent = `Purchasing for account: ${uid.slice(0, 8)}…`;
+  // Prefer a human-readable identity (name, then email) over the uid,
+  // which means nothing to the person looking at it and looks like an
+  // internal ID leaking onto a public page. Uid still travels silently
+  // in customData below - this is purely what's shown on screen.
+  const displayIdentity = name || email || `account ${uid.slice(0, 8)}…`;
+  signedInAs.textContent = `Purchasing as ${displayIdentity}`;
 
   function openCheckout(priceId) {
-    Paddle.Checkout.open({
+    const checkoutOptions = {
       items: [{ priceId, quantity: 1 }],
       customData: { uid },
-    });
+    };
+    // Optional convenience - prefills Paddle's own checkout email field so
+    // the customer doesn't have to retype something we already know.
+    // Paddle still treats this as just a suggestion, not verified identity.
+    if (email) checkoutOptions.customer = { email };
+    Paddle.Checkout.open(checkoutOptions);
   }
 
   document.getElementById('checkoutMonthly').addEventListener('click', () => {
