@@ -187,7 +187,11 @@ if (uid) {
   // which means nothing to the person looking at it and looks like an
   // internal ID leaking onto a public page. Uid still travels silently
   // in customData below - this is purely what's shown on screen.
-  const displayIdentity = name || email || `account ${uid.slice(0, 8)}…`;
+  // Show both when we have them - name alone doesn't confirm which
+  // account they're signed into, which is the whole point of showing
+  // this instead of a raw uid.
+  const displayIdentity =
+    name && email ? `${name} (${email})` : name || email || `account ${uid.slice(0, 8)}…`;
   signedInAs.textContent = `Purchasing as ${displayIdentity}`;
 
   function openCheckout(priceId) {
